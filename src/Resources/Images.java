@@ -59,6 +59,9 @@ public class Images {
     public static BufferedImage testMaptwo;
 
     public static BufferedImage grassBlock;
+    public static BufferedImage broBlock;
+    
+    
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
     public static BufferedImage surfaceBlock;
@@ -305,6 +308,9 @@ public class Images {
             
             //Minecraft grassblock
             grassBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/grassblock.png"));
+            
+            //BroBlock Pewdiepie
+            broBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brofist.png"));
 
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);

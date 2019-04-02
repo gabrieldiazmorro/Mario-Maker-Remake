@@ -220,9 +220,13 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.goomba;
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,06549f,0.05882f,0.003921f), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.3960784f,0.262745f,0.129411f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.grassBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,1,1), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.brofistBlock;
 		}
 
 		if(mouseManager.isLeftPressed() && !clicked){
@@ -259,7 +263,8 @@ public class MenuState extends State {
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
 					"7 -> Goomba (Brown)\n" +
-					"8 -> GrassBlock (Brown)");
+					"8 -> GrassBlock (Brown)" +
+					"9 -> BroBlock (Cyan)");
 		}
 	}
 	public UIAnimationButton getBut() {

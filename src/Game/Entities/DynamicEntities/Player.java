@@ -95,7 +95,7 @@ public class Player extends BaseDynamicEntity {
             Rectangle brickTopBounds = brick.getTopBounds();
             
             if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds)) {
-            	System.out.println("kill");
+//            	System.out.println("kill");
             	handler.getMario().setHit(true);
             }
             if (marioBottomBounds.intersects(brickTopBounds)) {
