@@ -48,6 +48,7 @@ public class Images {
 
 
     public static BufferedImage[] goomba;
+    public static BufferedImage[] shyguy;
 
 
     public static BufferedImage title;
@@ -68,6 +69,9 @@ public class Images {
     public static BufferedImage boundBlock;
     public static BufferedImage mushroom;
     public static BufferedImage goombaDies;
+    public static BufferedImage shyDies;
+    
+    private SpriteSheet shySpriteSheet;
 
     private SpriteSheet mainmenuSpriteSheet;
     private SpriteSheet backgroundSpriteSheet;
@@ -105,6 +109,7 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        shyguy = new BufferedImage[2];
 
 
 
@@ -118,6 +123,9 @@ public class Images {
             playerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/marioSNESSheet.png")));
             blockSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocksSheet.png")));
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
+            
+            shySpriteSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/ShyGuy.png")));
+            
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
             SAttackSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/enemySheet2.png")));
 
@@ -319,6 +327,12 @@ public class Images {
             goomba[0]=goombaSpriteSheet.crop(119,40,162,162);
             goomba[1]= goombaSpriteSheet.crop(329,40,162,162);
             goombaDies=goombaSpriteSheet.crop(539,100,162,81);
+            
+            
+           //enemy2
+            shyguy[0]=shySpriteSheet.crop(116,47,24,31);
+            shyguy[1]= shySpriteSheet.crop(174,47,26,29);
+            shyDies=shySpriteSheet.crop(174,47,26,29);
 
 
         }catch (IOException e) {

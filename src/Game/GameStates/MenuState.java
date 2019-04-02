@@ -227,7 +227,12 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0,1,1), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.brofistBlock;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,06549f,0.05882f,0.003921f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.shyguy;
 		}
+		
 
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -264,7 +269,8 @@ public class MenuState extends State {
 					"6 -> Mushroom (Purple)\n" +
 					"7 -> Goomba (Brown)\n" +
 					"8 -> GrassBlock (Brown)" +
-					"9 -> BroBlock (Cyan)");
+					"9 -> BroBlock (Cyan)" +
+					"P -> ShyGuy (Brown)");
 		}
 	}
 	public UIAnimationButton getBut() {
