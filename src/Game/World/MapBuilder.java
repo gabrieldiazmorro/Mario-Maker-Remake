@@ -22,7 +22,7 @@ public class MapBuilder {
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
-	public static int shyguy = new Color(255,255,0).getRGB();
+	public static int shyguy = new Color(218,165,32).getRGB();
 	public static boolean mapDone = false;
 	public static int grassBlock = new Color(101,67,33).getRGB();
 	public static int brofistBlock = new Color(0,255,255).getRGB();

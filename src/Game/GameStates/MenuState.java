@@ -228,7 +228,7 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.brofistBlock;
 		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_P)){
-			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,06549f,0.05882f,0.003921f), new Point(0, 0), "cursor1");
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.85490f,0.647058f,0.1254901f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.shyguy;
 		}
@@ -267,10 +267,10 @@ public class MenuState extends State {
 					"4 -> Surface Block (Orange)\n" +
 					"5 -> Bounds Block (Black)\n" +
 					"6 -> Mushroom (Purple)\n" +
-					"7 -> Goomba (Brown)\n" +
-					"8 -> GrassBlock (Brown)" +
-					"9 -> BroBlock (Cyan)" +
-					"P -> ShyGuy (Brown)");
+					"7 -> Goomba (Weird Brown)\n" +
+					"8 -> GrassBlock (Brown)\n" +
+					"9 -> BroBlock (Cyan)\n" +
+					"P -> ShyGuy (Gold)");
 		}
 	}
 	public UIAnimationButton getBut() {
