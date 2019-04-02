@@ -27,6 +27,9 @@ public class GameState extends State {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
             State.setState(handler.getGame().pauseState);
         }
+        if(handler.getMario().getHit()){
+            State.setState(handler.getGame().deathState);
+        }
         handler.getMario().tick();
         if(handler.getMap().getListener() != null && MapBuilder.mapDone) {
         	handler.getMap().getListener().tick();

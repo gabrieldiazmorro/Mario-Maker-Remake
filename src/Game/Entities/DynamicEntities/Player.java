@@ -2,6 +2,7 @@ package Game.Entities.DynamicEntities;
 
 import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
+import Game.Entities.StaticEntities.BoundBlock;
 import Main.Handler;
 import Resources.Animation;
 
@@ -92,6 +93,11 @@ public class Player extends BaseDynamicEntity {
 
         for (BaseStaticEntity brick : bricks) {
             Rectangle brickTopBounds = brick.getTopBounds();
+            
+            if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds)) {
+            	System.out.println("kill");
+            	handler.getMario().setHit(true);
+            }
             if (marioBottomBounds.intersects(brickTopBounds)) {
                 mario.setY(brick.getY() - mario.getDimension().height + 1);
                 falling = false;

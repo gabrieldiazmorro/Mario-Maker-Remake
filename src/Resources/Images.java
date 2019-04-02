@@ -52,11 +52,13 @@ public class Images {
 
     public static BufferedImage title;
     public static BufferedImage Pause;
+    public static BufferedImage DeathState;
     public static BufferedImage Cursor;
 
     public static BufferedImage testMap;
     public static BufferedImage testMaptwo;
 
+    public static BufferedImage grassBlock;
     public static BufferedImage breakBlock;
     public static BufferedImage misteryBlock;
     public static BufferedImage surfaceBlock;
@@ -120,6 +122,7 @@ public class Images {
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
             Pause = ImageIO.read(getClass().getResourceAsStream("/Sheets/Pause.png"));
+            DeathState = ImageIO.read(getClass().getResourceAsStream("/Sheets/DeathState.jpg"));
             Cursor = ImageIO.read(getClass().getResourceAsStream("/Sheets/cursor.png"));
             butstart[0]= ImageIO.read(getClass().getResourceAsStream("/Buttons/NormBut.png"));//normbut
             butstart[1]= ImageIO.read(getClass().getResourceAsStream("/Buttons/HoverBut.png"));//hoverbut
@@ -299,6 +302,9 @@ public class Images {
             surfaceBlock = interactableSpriteSheet.crop(112,93,16,16);
             //breakBlock = blockSpriteSheet.crop(272,112,16,16);
             breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
+            
+            //Minecraft grassblock
+            grassBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/grassblock.png"));
 
             //items
             mushroom = interactableSpriteSheet.crop(112,34,16,16);

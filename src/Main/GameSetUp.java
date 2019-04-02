@@ -5,6 +5,7 @@ import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Player;
 import Game.Entities.StaticEntities.BreakBlock;
+import Game.GameStates.DeathState;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
@@ -49,6 +50,8 @@ public class GameSetUp implements Runnable {
     public State gameState;
     public State menuState;
     public State pauseState;
+    public State deathState;
+    
 
     //Res.music
     private MusicHandler musicHandler;
@@ -80,6 +83,8 @@ public class GameSetUp implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        deathState = new DeathState(handler);
+        
 
         State.setState(menuState);
     }

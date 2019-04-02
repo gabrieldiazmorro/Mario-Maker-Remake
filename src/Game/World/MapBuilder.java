@@ -22,6 +22,7 @@ public class MapBuilder {
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static boolean mapDone = false;
+	public static int grassBlock = new Color(101,67,33).getRGB();
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
 		Map mapInCreation = new Map(handler);
@@ -33,6 +34,10 @@ public class MapBuilder {
 				if(currentPixel == boundBlock){
 					BaseStaticEntity BoundBlock = new BoundBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(BoundBlock);
+				//Minecraft Block
+				}else if(currentPixel == grassBlock){
+					BaseStaticEntity GrassBlock = new GrassBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(GrassBlock);
 				}else if(currentPixel == mario){
 					BaseDynamicEntity Mario = new Mario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Mario);
