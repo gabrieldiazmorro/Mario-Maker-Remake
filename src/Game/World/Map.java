@@ -73,6 +73,7 @@ public class Map {
             	}
             	else {
             		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width *-1, entity.height, null);
+
             	}
             }
             else if(entity instanceof UIPointer ){
