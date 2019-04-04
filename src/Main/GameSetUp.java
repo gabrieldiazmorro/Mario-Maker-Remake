@@ -9,6 +9,7 @@ import Game.GameStates.DeathState;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
+import Game.GameStates.PlayerState;
 import Game.GameStates.State;
 import Game.World.Map;
 import Game.World.MapBuilder;
@@ -51,6 +52,7 @@ public class GameSetUp implements Runnable {
     public State menuState;
     public State pauseState;
     public State deathState;
+    public State playerselect;
     
 
     //Res.music
@@ -84,9 +86,10 @@ public class GameSetUp implements Runnable {
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
         deathState = new DeathState(handler);
+        playerselect = new PlayerState(handler);
         
 
-        State.setState(menuState);
+        State.setState(playerselect);
     }
 
     public void reStart(){
