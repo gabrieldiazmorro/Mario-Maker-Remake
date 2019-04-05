@@ -232,6 +232,10 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.85490f,0.647058f,0.1254901f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.shyguy;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_W)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.627450f,0.125490f,0.941176f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.waluigi;
 		}
 		
 
@@ -271,7 +275,8 @@ public class MenuState extends State {
 					"7 -> Goomba (Weird Brown)\n" +
 					"8 -> GrassBlock (Brown)\n" +
 					"9 -> BroBlock (Cyan)\n" +
-					"P -> ShyGuy (Gold)");
+					"P -> ShyGuy (Gold)\n"+
+					"H -> Waluigi(purple)");
 		}
 	}
 	public UIAnimationButton getBut() {

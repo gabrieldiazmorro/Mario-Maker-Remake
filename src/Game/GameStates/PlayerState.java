@@ -50,8 +50,8 @@ public class PlayerState extends State {
 	private KeyManager keyManager;
 	private MouseManager mouseManager;
 	private boolean clicked = true;
-	private DisplayScreen player2Screen;
-//	private Canvas player2Canvas;
+	public static boolean player2Activate = false;
+	public static boolean moveScreen =false;
 
 
 	public PlayerState(Handler handler) {
@@ -100,28 +100,9 @@ public class PlayerState extends State {
 				//2Player
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "2 Player", () -> {
 					State.setState(handler.getGame().menuState);
-					player2Screen = new DisplayScreen("Player2",handler.getWidth() ,handler.getHeight());
-					player2Screen.getCanvas().setBackground(Color.cyan);
-					
-//
-//					player2Screen = new JFrame("Player 2");
-//					player2Screen.setSize(handler.getWidth(), handler.getHeight());
-//					player2Screen.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//					player2Screen.setResizable(false);
-//					player2Screen.setLocationRelativeTo(null);
-//					player2Screen.setVisible(true);
-//					player2Screen.setBackground(Color.black);
-//
-//					player2Canvas = new Canvas();
-//					player2Canvas.setPreferredSize(new Dimension(player2Screen.getWidth(),player2Screen.getHeight()));
-//					player2Canvas.setMaximumSize(new Dimension(player2Screen.getWidth(),player2Screen.getHeight()));
-//					player2Canvas.setMinimumSize(new Dimension(player2Screen.getWidth(),player2Screen.getHeight()));
-//					player2Canvas.setFocusable(false);
-//					player2Canvas.setBackground(Color.black);
-//
-//					player2Screen.add(player2Canvas);
-//					player2Screen.pack();
-//					display2 = new DisplayScreen("Player 2", 2*(Handler.DEFAULTWIDTH/3), 2*(Handler.DEFAULTWIDTH/3));
+					player2Activate =true;
+					moveScreen =true;
+
 				}, handler,Color.BLACK));
 
 

@@ -1,6 +1,7 @@
 package Main;
 
 import Game.Entities.DynamicEntities.Mario;
+import Game.Entities.DynamicEntities.Waluigi;
 import Game.World.Map;
 import Input.Camera;
 import Input.KeyManager;
@@ -23,8 +24,10 @@ public class Handler {
 
     private GameSetUp game;
     private Mario mario;
+    private Waluigi waluigi;
     private Map map;
     private boolean marioInMap =false;
+    private boolean waluigiInMap =false;
 
     private Camera camera;
 
@@ -65,9 +68,15 @@ public class Handler {
     public Mario getMario() {
         return mario;
     }
+    public Waluigi getWaluigi() {
+        return waluigi;
+    }
 
     public void setMario(Mario mario) {
         this.mario = mario;
+    }
+    public void setWaluigi(Waluigi waluigi) {
+        this.waluigi = waluigi;
     }
 
     public Map getMap() {
@@ -80,6 +89,7 @@ public class Handler {
 
     public boolean isInMap() {
         return marioInMap;
+
     }
 
     public void setIsInMap(boolean is) {

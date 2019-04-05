@@ -5,6 +5,7 @@ import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
 import Game.Entities.DynamicEntities.ShyGuy;
+import Game.Entities.DynamicEntities.Waluigi;
 import Game.Entities.StaticEntities.*;
 import Main.Handler;
 import Resources.Images;
@@ -17,6 +18,7 @@ public class MapBuilder {
 	public static int pixelMultiplier = 48;
 	public static int boundBlock = new Color(0,0,0).getRGB();
 	public static int mario = new Color(255,0,0).getRGB();
+	public static int waluigi = new Color(160,32,240).getRGB();
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
@@ -50,6 +52,10 @@ public class MapBuilder {
 				else if(currentPixel == mario){
 					BaseDynamicEntity Mario = new Mario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Mario);
+				}
+				else if(currentPixel == waluigi){
+					BaseDynamicEntity Waluigi = new Waluigi(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Waluigi);
 				}else if(currentPixel == surfaceBlock){
 					BaseStaticEntity SurfaceBlock = new SurfaceBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(SurfaceBlock);

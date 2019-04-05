@@ -29,6 +29,7 @@ import java.awt.image.BufferStrategy;
 
 public class GameSetUp implements Runnable {
     public DisplayScreen display;
+    public DisplayScreen secondPlayerDisplay;
     public String title;
 
     private boolean running = false;
@@ -36,7 +37,9 @@ public class GameSetUp implements Runnable {
     public static boolean threadB;
 
     private BufferStrategy bs;
+    private BufferStrategy bswaluigi;
     private Graphics g;
+    private Graphics gwaluigi;
     public UIPointer pointer;
 
     //Input
@@ -145,6 +148,13 @@ public class GameSetUp implements Runnable {
     private void tick(){
         //checks for key types and manages them
         keyManager.tick();
+        if (PlayerState.player2Activate && PlayerState.moveScreen) {
+        	secondPlayerDisplay = new DisplayScreen(title, handler.width, handler.height);
+        	secondPlayerDisplay.getFrame().setLocation(display.getFrame().getX()+display.getFrame().getWidth()/2, display.getFrame().getY());
+        	display.getFrame().setLocation(display.getFrame().getX()-display.getFrame().getWidth()/2, display.getFrame().getY());
+        	PlayerState.moveScreen =false;
+			
+		}
 
         if(musicHandler.ended()){
             musicHandler.restartBackground();
@@ -182,6 +192,8 @@ public class GameSetUp implements Runnable {
     }
 
     private void render(){
+    	if (!PlayerState.player2Activate) {
+			
         bs = display.getCanvas().getBufferStrategy();
 
         if(bs == null){
@@ -201,6 +213,37 @@ public class GameSetUp implements Runnable {
         //End Drawing!
         bs.show();
         g.dispose();
+    	}else {
+    		bs = display.getCanvas().getBufferStrategy();
+            bswaluigi = secondPlayerDisplay.getCanvas().getBufferStrategy();
+
+            if(bs == null || bswaluigi == null){
+                display.getCanvas().createBufferStrategy(3);
+                secondPlayerDisplay.getCanvas().createBufferStrategy(3);
+                return;
+            }
+            g = bs.getDrawGraphics();
+            gwaluigi = bswaluigi.getDrawGraphics();
+            //Clear Screen
+            g.clearRect(0, 0,  handler.width, handler.height);
+            gwaluigi.clearRect(0, 0,  handler.width, handler.height);
+
+            //Draw Here!
+            Graphics2D g2 = (Graphics2D) g.create();
+
+            if(State.getState() != null) {
+            	State.getState().render(g);
+            }if(State.getState() == handler.getGame().gameState) {
+            	State.getState().render(gwaluigi);
+            }
+                
+
+            //End Drawing!
+            bs.show();
+            bswaluigi.show();
+            g.dispose();
+            gwaluigi.dispose();
+    	}
     }
     public Map getMap() {
     	Map map = new Map(this.handler);
