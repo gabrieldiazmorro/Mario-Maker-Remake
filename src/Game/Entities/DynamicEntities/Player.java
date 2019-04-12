@@ -10,12 +10,15 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import com.sun.glass.events.KeyEvent;
+
 public class Player extends BaseDynamicEntity {
 
 	protected double velX,velY;
 
 	public boolean hit = false;
 	public boolean grabbed =false;
+	private int doublejump =0;
 	
 	public String facing = "Left";
 	public boolean moving = false;
@@ -105,6 +108,7 @@ public class Player extends BaseDynamicEntity {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);
 				falling = false;
 				velY=0;
+				doublejump =0;
 			}
 		}
 
@@ -185,6 +189,14 @@ public class Player extends BaseDynamicEntity {
 			jumping=true;
 			velY=10;
 			handler.getGame().getMusicHandler().playJump();
+		}
+		if(this instanceof Mario) {
+			if(jumping && handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE)&& doublejump<2) {
+				jumping =true;
+				velY=10;
+				handler.getGame().getMusicHandler().playJump();
+				doublejump++;
+			}
 		}
 	}
 
