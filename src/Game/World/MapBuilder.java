@@ -1,6 +1,7 @@
 package Game.World;
 
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.DynamicEntities.BigChungus;
 import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
@@ -25,6 +26,9 @@ public class MapBuilder {
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static int shyguy = new Color(218,165,32).getRGB();
+	
+	public static int chungus = new Color(169,169,169).getRGB();
+	
 	public static boolean mapDone = false;
 	public static int grassBlock = new Color(101,67,33).getRGB();
 	public static int brofistBlock = new Color(0,255,255).getRGB();
@@ -74,6 +78,9 @@ public class MapBuilder {
 				}else if(currentPixel == shyguy){
 					BaseDynamicEntity ShyGuy = new ShyGuy(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(ShyGuy);
+				}else if(currentPixel == chungus){
+					BaseDynamicEntity BigChungus = new BigChungus(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(BigChungus);
 				}
 			}
 

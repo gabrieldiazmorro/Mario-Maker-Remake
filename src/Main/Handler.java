@@ -30,6 +30,7 @@ public class Handler {
     private boolean waluigiInMap =false;
 
     private Camera camera;
+    private Camera waluigiCamera;
 
 
     public Handler(){
@@ -102,5 +103,13 @@ public class Handler {
 
     public void setCamera(Camera camera) {
         this.camera = camera;
+    }
+    
+    public Camera getWaluigiCamera() {
+        return waluigiCamera;
+    }
+
+    public void setWaluigiCamera(Camera camera) {
+        this.waluigiCamera = camera;
     }
 }

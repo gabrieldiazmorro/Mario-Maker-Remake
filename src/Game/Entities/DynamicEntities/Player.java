@@ -14,6 +14,9 @@ public class Player extends BaseDynamicEntity {
 
 	protected double velX,velY;
 
+	public boolean hit = false;
+	public boolean grabbed =false;
+	
 	public String facing = "Left";
 	public boolean moving = false;
 	public Animation playerSmallLeftAnimation,playerSmallRightAnimation,playerBigLeftWalkAnimation,playerBigRightWalkAnimation,playerBigLeftRunAnimation,playerBigRightRunAnimation;
@@ -85,7 +88,7 @@ public class Player extends BaseDynamicEntity {
 		ArrayList<BaseStaticEntity> bricks = handler.getMap().getBlocksOnMap();
 		ArrayList<BaseDynamicEntity> enemies =  handler.getMap().getEnemiesOnMap();
 
-		Rectangle marioBottomBounds =getBottomBounds();
+		Rectangle marioBottomBounds =mario.getBottomBounds();
 
 		if (!mario.jumping) {
 			falling = true;
@@ -96,7 +99,7 @@ public class Player extends BaseDynamicEntity {
 			//kills Mario when he touches the boundblock
 			if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds)) {
 				//            	System.out.println("kill");
-				//handler.getMario().setHit(true);
+				//handler.mario.setHit(true);
 			}
 			if (marioBottomBounds.intersects(brickTopBounds)) {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);
@@ -109,13 +112,13 @@ public class Player extends BaseDynamicEntity {
 			Rectangle enemyTopBounds = enemy.getTopBounds();
 			if (marioBottomBounds.intersects(enemyTopBounds) && !(enemy instanceof Item)) {
 				if(!enemy.ded) {
-					if(!handler.getMario().isBig) {   //kills mario if he is tiny and intersect with goomba
-						if(handler.getMario().getRightBounds().intersects(enemy.getLeftBounds())|| mario.getLeftBounds().intersects(enemy.getRightBounds())){
-							handler.getMario().setHit(true);
+					if(!mario.isBig) {   //kills mario if he is tiny and intersect with goomba
+						if(mario.getRightBounds().intersects(enemy.getLeftBounds())|| mario.getLeftBounds().intersects(enemy.getRightBounds())){
+							mario.setHit(true);
 						}
-					}else if(handler.getMario().isBig) { //turns mario small and kills goomba if mario is big
-						if(handler.getMario().getRightBounds().intersects(enemy.getLeftBounds())|| mario.getLeftBounds().intersects(enemy.getRightBounds())){
-							handler.getMario().isBig =false;
+					}else if(mario.isBig) { //turns mario small and kills goomba if mario is big
+						if(mario.getRightBounds().intersects(enemy.getLeftBounds())|| mario.getLeftBounds().intersects(enemy.getRightBounds())){
+							mario.isBig =false;
 						}
 					}
 
@@ -192,5 +195,10 @@ public class Player extends BaseDynamicEntity {
 		return velY;
 	}
 
-
+	public boolean getHit() {
+		return this.hit;
+	}
+	public void setHit(Boolean hit) {
+		this.hit = hit;
+	}
 }

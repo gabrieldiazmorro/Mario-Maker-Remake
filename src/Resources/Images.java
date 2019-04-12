@@ -48,6 +48,7 @@ public class Images {
 
 
     public static BufferedImage[] goomba;
+    public static BufferedImage[] chungus;
     public static BufferedImage[] shyguy;
 
 
@@ -79,6 +80,7 @@ public class Images {
     private SpriteSheet playerSpriteSheet;
     private SpriteSheet blockSpriteSheet;
     private SpriteSheet goombaSpriteSheet;
+    private SpriteSheet chungusSpriteSheet;
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
 
@@ -109,6 +111,7 @@ public class Images {
         marioBigJumpLeft = new BufferedImage[5];
         marioBigJumpRight = new BufferedImage[5];
         goomba = new BufferedImage[2];
+        chungus = new BufferedImage[2];
         shyguy = new BufferedImage[2];
 
 
@@ -123,7 +126,8 @@ public class Images {
             playerSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/marioSNESSheet.png")));
             blockSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/blocksSheet.png")));
             goombaSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/goombaSprite.png")));
-            
+            chungusSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/chungusSprites.png")));
+
             shySpriteSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/ShyGuy.png")));
             
             SSpriteSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/Sheets.png")));
@@ -199,6 +203,9 @@ public class Images {
             marioBigJumpRight[2] = playerSpriteSheet.crop(248,196,15,27);//up
             marioBigJumpRight[3] = playerSpriteSheet.crop(287,122,16,15);//down
             marioBigJumpRight[4] = playerSpriteSheet.crop(368,115,16,29);//Change
+            
+            chungus[0] = chungusSpriteSheet.crop(349, 7, 149, 221);
+			chungus[1] = chungusSpriteSheet.crop(14, 14, 156, 213);
             
             item[0] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL1.png"));
             item[1] =  ImageIO.read(getClass().getResourceAsStream("/Sheets/item/SL2.png"));

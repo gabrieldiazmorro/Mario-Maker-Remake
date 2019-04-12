@@ -32,7 +32,7 @@ public class Waluigi extends Player{
 	    if(!grabbed) {
             super.tick();
             if (!this.hit) {
-                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SLASH) && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
+                if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_CONTROL) && !handler.getKeyManager().up2 && !handler.getKeyManager().down2) {
                     this.jump();
                 }
 
@@ -86,7 +86,7 @@ public class Waluigi extends Player{
         }
 	}
 
-	public void drawMario(Graphics2D g2) {
+	public void drawWaluigi(Graphics2D g2) {
 		if(!grabbed) {
 			if (!isBig) {
 				if (handler.getKeyManager().up2) {
@@ -177,7 +177,7 @@ public class Waluigi extends Player{
 					if (!running) {
 						changeDirrection = false;
 						changeDirectionCounter = 0;
-						drawMario(g2);
+						drawWaluigi(g2);
 					}
 					if (facing.equals("Right")) {
 						g2.drawImage(Images.marioBigJumpRight[4], x, y, width, height, null);

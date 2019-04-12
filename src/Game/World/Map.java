@@ -4,6 +4,7 @@ import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.*;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.Wall;
+import Game.GameStates.PlayerState;
 import Main.Handler;
 import Resources.Images;
 
@@ -46,7 +47,13 @@ public class Map {
             handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
             handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
             bottomBorder=handler.getHeight()+handler.getMario().y;
-        }else {
+        }else if(entity instanceof Waluigi){
+            handler.setWaluigi((Waluigi) entity);
+            handler.getWaluigiCamera().setX(handler.getWaluigi().x- (MapBuilder.pixelMultiplier*6));
+            handler.getWaluigiCamera().setY(handler.getWaluigi().y - (MapBuilder.pixelMultiplier*10));
+            bottomBorder=handler.getHeight()+handler.getWaluigi().y;
+        }
+        else {
             enemiesOnMap.add(entity);
         }
     }
@@ -67,6 +74,9 @@ public class Map {
             }else if(entity instanceof Goomba && !entity.ded){
                 g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             }
+            else if(entity instanceof BigChungus && !entity.ded){
+            	 g2.drawImage(((BigChungus)entity).anim.getCurrentFrame(), entity.x, entity.y-25, entity.width, entity.height+20, null);
+            }
             else if(entity instanceof ShyGuy && !entity.ded){
             	if(!(entity.direction == "Right")) {
                 g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
@@ -83,12 +93,62 @@ public class Map {
             }
         }
         handler.getMario().drawMario(g2);
+        if (PlayerState.player2Activate) {
+			handler.getWaluigi().drawWaluigi(g2);
+		}
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
             this.hand.render(g2);
             this.walls.render(g2);
         }
         g2.translate(camLocation.x, camLocation.y);
+    }
+    
+    public void drawMap2(Graphics2D g2) {
+        handler.setIsInMap(true);
+
+        Point camLocationWaluigi = new Point((int)handler.getWaluigiCamera().getX(), (int)handler.getWaluigiCamera().getY());
+        g2.translate(-camLocationWaluigi.x, -camLocationWaluigi.y);
+        g2.drawImage(Images.backgrounds2[this.mapBackground], camLocationWaluigi.x, camLocationWaluigi.y, this.handler.getWidth(), this.handler.getHeight(),null);
+        for (BaseStaticEntity block:blocksOnMap) {
+            g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
+        }
+        for (BaseDynamicEntity entity:enemiesOnMap) {
+            if(entity instanceof Item){
+                if(!((Item)entity).used){
+                    g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+                }
+            }else if(entity instanceof Goomba && !entity.ded){
+                g2.drawImage(((Goomba)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            }
+            else if(entity instanceof BigChungus && !entity.ded){
+            	g2.drawImage(((BigChungus)entity).anim.getCurrentFrame(), entity.x, entity.y-25, entity.width, entity.height+20, null);
+            }
+            else if(entity instanceof ShyGuy && !entity.ded){
+            	if(!(entity.direction == "Right")) {
+                g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
+            	}
+            	else {
+            		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width *-1, entity.height, null);
+
+            	}
+            }
+            else if(entity instanceof UIPointer ){
+                ((UIPointer) entity).render(g2);
+            }else {
+                g2.drawImage(entity.sprite, entity.x, entity.y, entity.width, entity.height, null);
+            }
+        }
+        handler.getMario().drawMario(g2);
+        if (PlayerState.player2Activate) {
+			handler.getWaluigi().drawWaluigi(g2);
+		}
+        if(this.listener != null && MapBuilder.mapDone) {
+            this.listener.render(g2);
+            this.hand.render(g2);
+            this.walls.render(g2);
+        }
+        g2.translate(camLocationWaluigi.x, camLocationWaluigi.y);
     }
 
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {

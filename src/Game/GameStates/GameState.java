@@ -31,6 +31,10 @@ public class GameState extends State {
             State.setState(handler.getGame().deathState);
         }
         handler.getMario().tick();
+        
+        if (PlayerState.player2Activate) {
+			handler.getWaluigi().tick();
+		}
         if(handler.getMap().getListener() != null && MapBuilder.mapDone) {
         	handler.getMap().getListener().tick();
         	handler.getMap().getHand().tick();
@@ -45,6 +49,7 @@ public class GameState extends State {
     public void render(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
         handler.getMap().drawMap(g2);
+        
     }
 
 }
