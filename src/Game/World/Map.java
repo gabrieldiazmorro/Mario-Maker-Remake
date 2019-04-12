@@ -47,10 +47,10 @@ public class Map {
             handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
             handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
             bottomBorder=handler.getHeight()+handler.getMario().y;
-        }else if(entity instanceof Waluigi){
-            handler.setWaluigi((Waluigi) entity);
-            handler.getWaluigiCamera().setX(handler.getWaluigi().x- (MapBuilder.pixelMultiplier*6));
-            handler.getWaluigiCamera().setY(handler.getWaluigi().y - (MapBuilder.pixelMultiplier*10));
+        }else if(entity instanceof Wario){
+            handler.setWaluigi((Wario) entity);
+            handler.getWarioCamera().setX(handler.getWaluigi().x- (MapBuilder.pixelMultiplier*6));
+            handler.getWarioCamera().setY(handler.getWaluigi().y - (MapBuilder.pixelMultiplier*10));
             bottomBorder=handler.getHeight()+handler.getWaluigi().y;
         }
         else {
@@ -94,7 +94,7 @@ public class Map {
         }
         handler.getMario().drawMario(g2);
         if (PlayerState.player2Activate) {
-			handler.getWaluigi().drawWaluigi(g2);
+			handler.getWaluigi().drawWario(g2);
 		}
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
@@ -107,9 +107,9 @@ public class Map {
     public void drawMap2(Graphics2D g2) {
         handler.setIsInMap(true);
 
-        Point camLocationWaluigi = new Point((int)handler.getWaluigiCamera().getX(), (int)handler.getWaluigiCamera().getY());
-        g2.translate(-camLocationWaluigi.x, -camLocationWaluigi.y);
-        g2.drawImage(Images.backgrounds2[this.mapBackground], camLocationWaluigi.x, camLocationWaluigi.y, this.handler.getWidth(), this.handler.getHeight(),null);
+        Point camLocationWario = new Point((int)handler.getWarioCamera().getX(), (int)handler.getWarioCamera().getY());
+        g2.translate(-camLocationWario.x, -camLocationWario.y);
+        g2.drawImage(Images.backgrounds2[this.mapBackground], camLocationWario.x, camLocationWario.y, this.handler.getWidth(), this.handler.getHeight(),null);
         for (BaseStaticEntity block:blocksOnMap) {
             g2.drawImage(block.sprite,block.x,block.y,block.width,block.height,null);
         }
@@ -141,14 +141,14 @@ public class Map {
         }
         handler.getMario().drawMario(g2);
         if (PlayerState.player2Activate) {
-			handler.getWaluigi().drawWaluigi(g2);
+			handler.getWaluigi().drawWario(g2);
 		}
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
             this.hand.render(g2);
             this.walls.render(g2);
         }
-        g2.translate(camLocationWaluigi.x, camLocationWaluigi.y);
+        g2.translate(camLocationWario.x, camLocationWario.y);
     }
 
     public ArrayList<BaseStaticEntity> getBlocksOnMap() {

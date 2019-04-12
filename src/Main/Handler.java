@@ -1,7 +1,7 @@
 package Main;
 
 import Game.Entities.DynamicEntities.Mario;
-import Game.Entities.DynamicEntities.Waluigi;
+import Game.Entities.DynamicEntities.Wario;
 import Game.World.Map;
 import Input.Camera;
 import Input.KeyManager;
@@ -24,13 +24,13 @@ public class Handler {
 
     private GameSetUp game;
     private Mario mario;
-    private Waluigi waluigi;
+    private Wario waluigi;
     private Map map;
     private boolean marioInMap =false;
-    private boolean waluigiInMap =false;
+    private boolean warioiInMap =false;
 
     private Camera camera;
-    private Camera waluigiCamera;
+    private Camera warioCamera;
 
 
     public Handler(){
@@ -69,14 +69,14 @@ public class Handler {
     public Mario getMario() {
         return mario;
     }
-    public Waluigi getWaluigi() {
+    public Wario getWaluigi() {
         return waluigi;
     }
 
     public void setMario(Mario mario) {
         this.mario = mario;
     }
-    public void setWaluigi(Waluigi waluigi) {
+    public void setWaluigi(Wario waluigi) {
         this.waluigi = waluigi;
     }
 
@@ -105,11 +105,11 @@ public class Handler {
         this.camera = camera;
     }
     
-    public Camera getWaluigiCamera() {
-        return waluigiCamera;
+    public Camera getWarioCamera() {
+        return warioCamera;
     }
 
-    public void setWaluigiCamera(Camera camera) {
-        this.waluigiCamera = camera;
+    public void setWarioCamera(Camera camera) {
+        this.warioCamera = camera;
     }
 }

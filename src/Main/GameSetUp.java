@@ -38,8 +38,8 @@ public class GameSetUp implements Runnable {
 
 	private BufferStrategy bs;
 	private Graphics g;
-	private BufferStrategy bswaluigi;
-	private Graphics gwaluigi;
+	private BufferStrategy bswario;
+	private Graphics gwario;
 	
 	public UIPointer pointer;
 
@@ -72,7 +72,7 @@ public class GameSetUp implements Runnable {
 		initialmouseManager = mouseManager;
 		musicHandler = new MusicHandler(handler);
 		handler.setCamera(new Camera());
-		handler.setWaluigiCamera(new Camera());
+		handler.setWarioCamera(new Camera());
 	}
 
 	private void init(){
@@ -170,7 +170,7 @@ public class GameSetUp implements Runnable {
 				updateCamera();
 			} else {
 				updateCamera();
-				updateWaluigiCamera();
+				updateWarioCamera();
 
 			}
 		} 
@@ -199,26 +199,26 @@ public class GameSetUp implements Runnable {
 		handler.getCamera().moveCam(shiftAmount,shiftAmountY);
 	}
 
-	private void updateWaluigiCamera() {
-		Player waluigi = handler.getWaluigi();
-		double waluigiVelocityX = waluigi.getVelX();
-		double waluigiVelocityY = waluigi.getVelY();
+	private void updateWarioCamera() {
+		Player wario = handler.getWaluigi();
+		double warioVelocityX = wario.getVelX();
+		double warioVelocityY = wario.getVelY();
 		double shiftAmount = 0;
 		double shiftAmountY = 0;
 
-		if (waluigiVelocityX > 0 && waluigi.getX() - 2*(handler.getWidth()/3) > handler.getWaluigiCamera().getX()) {
-			shiftAmount = waluigiVelocityX;
+		if (warioVelocityX > 0 && wario.getX() - 2*(handler.getWidth()/3) > handler.getWarioCamera().getX()) {
+			shiftAmount = warioVelocityX;
 		}
-		if (waluigiVelocityX < 0 && waluigi.getX() +  2*(handler.getWidth()/3) < handler.getWaluigiCamera().getX()+handler.width) {
-			shiftAmount = waluigiVelocityX;
+		if (warioVelocityX < 0 && wario.getX() +  2*(handler.getWidth()/3) < handler.getWarioCamera().getX()+handler.width) {
+			shiftAmount = warioVelocityX;
 		}
-		if (waluigiVelocityY > 0 && waluigi.getY() - 2*(handler.getHeight()/3) > handler.getWaluigiCamera().getY()) {
-			shiftAmountY = waluigiVelocityY;
+		if (warioVelocityY > 0 && wario.getY() - 2*(handler.getHeight()/3) > handler.getWarioCamera().getY()) {
+			shiftAmountY = warioVelocityY;
 		}
-		if (waluigiVelocityX < 0 && waluigi.getY() +  2*(handler.getHeight()/3) < handler.getWaluigiCamera().getY()+handler.height) {
-			shiftAmountY = -waluigiVelocityY;
+		if (warioVelocityX < 0 && wario.getY() +  2*(handler.getHeight()/3) < handler.getWarioCamera().getY()+handler.height) {
+			shiftAmountY = -warioVelocityY;
 		}
-		handler.getWaluigiCamera().moveCam(shiftAmount,shiftAmountY);
+		handler.getWarioCamera().moveCam(shiftAmount,shiftAmountY);
 	}
 
 	private void render(){
@@ -245,27 +245,27 @@ public class GameSetUp implements Runnable {
 			g.dispose();
 		}else {
 			bs = display.getCanvas().getBufferStrategy();
-			bswaluigi = secondPlayerDisplay.getCanvas().getBufferStrategy();
+			bswario = secondPlayerDisplay.getCanvas().getBufferStrategy();
 
-			if(bs == null || bswaluigi == null){
+			if(bs == null || bswario == null){
 				display.getCanvas().createBufferStrategy(3);
 				secondPlayerDisplay.getCanvas().createBufferStrategy(3);
 				return;
 			}
 			g = bs.getDrawGraphics();
-			gwaluigi = bswaluigi.getDrawGraphics();
+			gwario = bswario.getDrawGraphics();
 			//Clear Screen
 			g.clearRect(0, 0,  handler.width, handler.height);
-			gwaluigi.clearRect(0, 0,  handler.width, handler.height);
+			gwario.clearRect(0, 0,  handler.width, handler.height);
 
 			//Draw Here!
-			Graphics2D Waluigig2 = (Graphics2D) gwaluigi.create();
+			Graphics2D Wario2 = (Graphics2D) gwario.create();
 			Graphics2D g2 = (Graphics2D) g.create();
 
 			if(State.getState() != null) {
 				State.getState().render(g);
 				if(State.getState() instanceof GameState && PlayerState.player2Activate) {
-					handler.getMap().drawMap2(Waluigig2);
+					handler.getMap().drawMap2(Wario2);
 
 				}
 			}
@@ -273,9 +273,9 @@ public class GameSetUp implements Runnable {
 
 			//End Drawing!
 			bs.show();
-			bswaluigi.show();
+			bswario.show();
 			g.dispose();
-			gwaluigi.dispose();
+			gwario.dispose();
 		}
 	}
 	public Map getMap() {

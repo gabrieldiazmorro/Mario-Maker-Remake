@@ -6,7 +6,7 @@ import Game.Entities.DynamicEntities.Goomba;
 import Game.Entities.DynamicEntities.Mario;
 import Game.Entities.DynamicEntities.Mushroom;
 import Game.Entities.DynamicEntities.ShyGuy;
-import Game.Entities.DynamicEntities.Waluigi;
+import Game.Entities.DynamicEntities.Wario;
 import Game.Entities.StaticEntities.*;
 import Main.Handler;
 import Resources.Images;
@@ -19,13 +19,13 @@ public class MapBuilder {
 	public static int pixelMultiplier = 48;
 	public static int boundBlock = new Color(0,0,0).getRGB();
 	public static int mario = new Color(255,0,0).getRGB();
-	public static int waluigi = new Color(160,32,240).getRGB();
+	public static int shyguy = new Color(160,32,240).getRGB();
 	public static int surfaceBlock = new Color(255,106,0).getRGB();
 	public static int breakBlock = new Color(0,38,255).getRGB();
 	public static int misteryBlock = new Color(255,216,0).getRGB();
 	public static int mushroom = new Color(178,0,255).getRGB();
 	public static int goomba = new Color(167,15,1).getRGB();
-	public static int shyguy = new Color(218,165,32).getRGB();
+	public static int wario = new Color(218,165,32).getRGB();
 	
 	public static int chungus = new Color(169,169,169).getRGB();
 	
@@ -57,9 +57,9 @@ public class MapBuilder {
 					BaseDynamicEntity Mario = new Mario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addEnemy(Mario);
 				}
-				else if(currentPixel == waluigi){
-					BaseDynamicEntity Waluigi = new Waluigi(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
-					mapInCreation.addEnemy(Waluigi);
+				else if(currentPixel == wario){
+					BaseDynamicEntity Wario = new Wario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addEnemy(Wario);
 				}else if(currentPixel == surfaceBlock){
 					BaseStaticEntity SurfaceBlock = new SurfaceBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(SurfaceBlock);
