@@ -7,10 +7,12 @@ import Game.Entities.DynamicEntities.Player;
 import Game.Entities.StaticEntities.BreakBlock;
 import Game.GameStates.DeathState;
 import Game.GameStates.GameState;
+import Game.GameStates.MarioWin;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
 import Game.GameStates.PlayerState;
 import Game.GameStates.State;
+import Game.GameStates.WarioWin;
 import Game.World.Map;
 import Game.World.MapBuilder;
 import Input.Camera;
@@ -57,6 +59,8 @@ public class GameSetUp implements Runnable {
 	public State pauseState;
 	public State deathState;
 	public State playerselect;
+	public State mariowin;
+	public State wariowin;
 
 
 	//Res.music
@@ -92,6 +96,8 @@ public class GameSetUp implements Runnable {
 		pauseState = new PauseState(handler);
 		deathState = new DeathState(handler);
 		playerselect = new PlayerState(handler);
+		mariowin = new MarioWin(handler);
+		wariowin = new WarioWin(handler);
 
 
 		State.setState(playerselect);
