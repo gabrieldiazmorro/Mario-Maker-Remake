@@ -80,6 +80,7 @@ public class Images {
     public static BufferedImage misteryBlock;
     public static BufferedImage surfaceBlock;
     public static BufferedImage boundBlock;
+    public static BufferedImage starblock;
     public static BufferedImage mushroom;
     public static BufferedImage goombaDies;
     public static BufferedImage shyDies;
@@ -391,6 +392,9 @@ public class Images {
             //breakBlock = blockSpriteSheet.crop(272,112,16,16);
             breakBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/brick.png"));
             
+            
+            //Starblock win detector
+            starblock = ImageIO.read(getClass().getResourceAsStream("/Sheets/StarBlock.png"));
             //Minecraft grassblock
             grassBlock = ImageIO.read(getClass().getResourceAsStream("/Sheets/grassblock.png"));
             

@@ -200,7 +200,7 @@ public class GameSetUp implements Runnable {
 	}
 
 	private void updateWarioCamera() {
-		Player wario = handler.getWaluigi();
+		Player wario = handler.getWario();
 		double warioVelocityX = wario.getVelX();
 		double warioVelocityY = wario.getVelY();
 		double shiftAmount = 0;

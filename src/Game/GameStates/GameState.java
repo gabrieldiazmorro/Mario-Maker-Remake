@@ -27,13 +27,25 @@ public class GameState extends State {
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
             State.setState(handler.getGame().pauseState);
         }
-        if(handler.getMario().getHit()){
+        if(PlayerState.player2Activate) {
+        	if(handler.getMario().getHit()|| handler.getWario().getWin()){
+//               State.setState(handler.getGame().deathState); //wario wins state
+        		System.out.println("wario wins");
+            }
+        	if(handler.getWario().getHit() || handler.getMario().getWin() ){
+//                State.setState(handler.getGame().deathState);// Mario wins state
+        		System.out.println("Mario wins!");
+            }
+        	
+        }
+        if(!PlayerState.player2Activate && handler.getMario().getHit()){
             State.setState(handler.getGame().deathState);
         }
+        
         handler.getMario().tick();
         
         if (PlayerState.player2Activate) {
-			handler.getWaluigi().tick();
+			handler.getWario().tick();
 		}
         if(handler.getMap().getListener() != null && MapBuilder.mapDone) {
         	handler.getMap().getListener().tick();

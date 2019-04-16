@@ -240,6 +240,10 @@ public class MenuState extends State {
 			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.85490f,0.647058f,0.1254901f), new Point(0, 0), "cursor1");
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.wario;
+		}if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_S)){
+			Cursor c = Toolkit.getDefaultToolkit().createCustomCursor(Images.tint(Images.Cursor,0.603174f,1,0.603174f), new Point(0, 0), "cursor1");
+			display.getCanvas().setCursor(c);
+			colorSelected = MapBuilder.starBlock;
 		}
 		
 
@@ -281,7 +285,9 @@ public class MenuState extends State {
 					"9 -> BroBlock (Cyan)\n" +
 					"P -> ShyGuy (Purple)\n"+
 					"C -> Chungus (Gray)\n"+
+					"S -> StarBlock (Mint Green)\n"+
 					"W -> Wario(Gold)");
+			
 		}
 	}
 	public UIAnimationButton getBut() {

@@ -3,6 +3,7 @@ package Game.Entities.DynamicEntities;
 import Game.Entities.EntityBase;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.Entities.StaticEntities.BoundBlock;
+import Game.Entities.StaticEntities.StarBlock;
 import Main.Handler;
 import Resources.Animation;
 
@@ -18,6 +19,8 @@ public class Player extends BaseDynamicEntity {
 
 	public boolean hit = false;
 	public boolean grabbed =false;
+	public boolean won = false;
+	
 	private int doublejump =0;
 	
 	public String facing = "Left";
@@ -101,8 +104,11 @@ public class Player extends BaseDynamicEntity {
 			Rectangle brickTopBounds = brick.getTopBounds();
 			//kills Mario when he touches the boundblock
 			if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds)) {
-				//            	System.out.println("kill");
-				//handler.mario.setHit(true);
+				//System.out.println("kill");
+				mario.setHit(true);
+			}if(brick instanceof StarBlock && marioBottomBounds.intersects(brickTopBounds)) { //DETECTS WHO WON
+				mario.setWin(true);
+				
 			}
 			if (marioBottomBounds.intersects(brickTopBounds)) {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);
@@ -212,5 +218,11 @@ public class Player extends BaseDynamicEntity {
 	}
 	public void setHit(Boolean hit) {
 		this.hit = hit;
+	}
+	public boolean getWin() {
+		return this.won;
+	}
+	public void setWin(Boolean won) {
+		this.won = won;
 	}
 }

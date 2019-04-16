@@ -24,7 +24,7 @@ public class Handler {
 
     private GameSetUp game;
     private Mario mario;
-    private Wario waluigi;
+    private Wario wario;
     private Map map;
     private boolean marioInMap =false;
     private boolean warioiInMap =false;
@@ -69,15 +69,15 @@ public class Handler {
     public Mario getMario() {
         return mario;
     }
-    public Wario getWaluigi() {
-        return waluigi;
+    public Wario getWario() {
+        return wario;
     }
 
     public void setMario(Mario mario) {
         this.mario = mario;
     }
-    public void setWaluigi(Wario waluigi) {
-        this.waluigi = waluigi;
+    public void setWaluigi(Wario wario) {
+        this.wario = wario;
     }
 
     public Map getMap() {

@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 public class Mario extends Player{
 
 	public boolean hit = false;
-	public boolean grabbed =false;
+	public boolean grabbed =false;	
 
 	public Mario(int x, int y, int width, int height, Handler handler) {
 		super(x, y, width, height, handler, Images.marioSmallWalkRight[0]

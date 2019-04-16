@@ -27,11 +27,13 @@ public class MapBuilder {
 	public static int goomba = new Color(167,15,1).getRGB();
 	public static int wario = new Color(218,165,32).getRGB();
 	
+	
 	public static int chungus = new Color(169,169,169).getRGB();
 	
 	public static boolean mapDone = false;
 	public static int grassBlock = new Color(101,67,33).getRGB();
 	public static int brofistBlock = new Color(0,255,255).getRGB();
+	public static int starBlock = new Color(152,255,152).getRGB();
 	
 
 	public static Map createMap(BufferedImage mapImage, Handler handler){
@@ -52,6 +54,9 @@ public class MapBuilder {
 				else if(currentPixel == brofistBlock){
 					BaseStaticEntity BroBlock = new BroBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
 					mapInCreation.addBlock(BroBlock);
+				}else if(currentPixel == starBlock){
+					BaseStaticEntity StarBlock = new StarBlock(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);
+					mapInCreation.addBlock(StarBlock);
 				}
 				else if(currentPixel == mario){
 					BaseDynamicEntity Mario = new Mario(xPos,yPos,pixelMultiplier,pixelMultiplier,handler);

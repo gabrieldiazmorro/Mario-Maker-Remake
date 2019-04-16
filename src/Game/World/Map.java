@@ -49,9 +49,9 @@ public class Map {
             bottomBorder=handler.getHeight()+handler.getMario().y;
         }else if(entity instanceof Wario){
             handler.setWaluigi((Wario) entity);
-            handler.getWarioCamera().setX(handler.getWaluigi().x- (MapBuilder.pixelMultiplier*6));
-            handler.getWarioCamera().setY(handler.getWaluigi().y - (MapBuilder.pixelMultiplier*10));
-            bottomBorder=handler.getHeight()+handler.getWaluigi().y;
+            handler.getWarioCamera().setX(handler.getWario().x- (MapBuilder.pixelMultiplier*6));
+            handler.getWarioCamera().setY(handler.getWario().y - (MapBuilder.pixelMultiplier*10));
+            bottomBorder=handler.getHeight()+handler.getWario().y;
         }
         else {
             enemiesOnMap.add(entity);
@@ -94,7 +94,7 @@ public class Map {
         }
         handler.getMario().drawMario(g2);
         if (PlayerState.player2Activate) {
-			handler.getWaluigi().drawWario(g2);
+			handler.getWario().drawWario(g2);
 		}
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
@@ -141,7 +141,7 @@ public class Map {
         }
         handler.getMario().drawMario(g2);
         if (PlayerState.player2Activate) {
-			handler.getWaluigi().drawWario(g2);
+			handler.getWario().drawWario(g2);
 		}
         if(this.listener != null && MapBuilder.mapDone) {
             this.listener.render(g2);
