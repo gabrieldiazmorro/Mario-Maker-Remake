@@ -105,7 +105,22 @@ public class MenuState extends State {
 						State.setState(handler.getGame().gameState);
 					}
 				}, handler,Color.BLACK));
-
+				//Race
+				uiManager.addObjects(new UIStringButton(handler.getWidth() /2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Race", () -> {
+					if(!handler.isInMap()) {
+						mode = "Menu";
+						handler.setMap(MapBuilder.createMap(Images.Race, handler));
+						State.setState(handler.getGame().gameState);
+					}
+				}, handler,Color.BLACK));
+				// Another Race
+				uiManager.addObjects(new UIStringButton(handler.getWidth() /2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10) + 64, 128, 64, "Race2", () -> {
+					if(!handler.isInMap()) {
+						mode = "Menu";
+						handler.setMap(MapBuilder.createMap(Images.Race2, handler));
+						State.setState(handler.getGame().gameState);
+					}
+				}, handler,Color.BLACK));
 				//testmap2
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
 					if(!handler.isInMap()) {
