@@ -393,7 +393,7 @@ public class Images {
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
             Race = ImageIO.read(getClass().getResourceAsStream("/maps/Mario Heaven.png"));
-            Race2 = ImageIO.read(getClass().getResourceAsStream("/maps/Trippy.png"));
+            Race2 = ImageIO.read(getClass().getResourceAsStream("/maps/Race.png"));
             //blocks
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);
             misteryBlock = interactableSpriteSheet.crop(32,93,16,16);
