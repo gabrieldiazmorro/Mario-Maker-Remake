@@ -67,14 +67,10 @@ public class MenuState extends State {
 		for (int i:str) { str2+=(char)i;}
 		this.but = new UIAnimationButton(handler.getWidth() - (handler.getWidth()/ 8),(handler.getHeight()/0b1100),32, 32 , Images.item, () -> {
 			if(but.getdraw() && !handler.isInMap()) {handler.setMap(handler.getGame().getMap());
-				handler.getGame().getMusicHandler().pauseBackground();
-				handler.getGame().getMusicHandler().play("Megalovania");
-				State.setState(handler.getGame().gameState);}}, this.handler);
-//		uiManager.addObjects(new UIImageButton(handler.getWidth()/2-64, handler.getHeight()/2+(handler.getHeight()/8), 128, 64, Images.butstart, () -> {
-//			if(!handler.isInMap()) {
-//				mode = "Select";
-//			}
-//		}));
+			handler.getGame().getMusicHandler().pauseBackground();
+			handler.getGame().getMusicHandler().play("Megalovania");
+			State.setState(handler.getGame().gameState);}}, this.handler);
+
 		mode ="Select";
 	}
 
@@ -260,7 +256,7 @@ public class MenuState extends State {
 			display.getCanvas().setCursor(c);
 			colorSelected = MapBuilder.starBlock;
 		}
-		
+
 
 		if(mouseManager.isLeftPressed() && !clicked){
 			int posX =mouseManager.getMouseX()/GridPixelsize;
@@ -271,21 +267,47 @@ public class MenuState extends State {
 		}
 
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ENTER)){
-			for (int i = 0; i < GridWidthPixelCount; i++) {
-				for (int j = 0; j < GridHeightPixelCount; j++) {
-					if(blocks[i][j]!=null && blocks[i][j].equals(new Color(MapBuilder.mario)) && blocks[i][j+1]!=null&& !blocks[i][j+1].equals(new Color(MapBuilder.mario))){
-						handler.setMap(MapBuilder.createMap(createImage(GridWidthPixelCount,GridHeightPixelCount,blocks,JOptionPane.showInputDialog("Enter file name: ","Mario Heaven")), handler));
-						State.setState(handler.getGame().gameState);
-						creatingMap=false;
-						display.getFrame().setVisible(false);
-						display.getFrame().dispose();
-						handler.getGame().mouseManager=handler.getGame().initialmouseManager;
-						return;
+			if (PlayerState.player2Activate ==false) {
+				for (int i = 0; i < GridWidthPixelCount; i++) {
+					for (int j = 0; j < GridHeightPixelCount; j++) {
+						if(blocks[i][j]!=null && blocks[i][j].equals(new Color(MapBuilder.mario)) && blocks[i][j+1]!=null&& !blocks[i][j+1].equals(new Color(MapBuilder.mario))){
+							handler.setMap(MapBuilder.createMap(createImage(GridWidthPixelCount,GridHeightPixelCount,blocks,JOptionPane.showInputDialog("Enter file name: ","Mario Heaven")), handler));
+							State.setState(handler.getGame().gameState);
+							creatingMap=false;
+							display.getFrame().setVisible(false);
+							display.getFrame().dispose();
+							handler.getGame().mouseManager=handler.getGame().initialmouseManager;
+							return;
+						}
 					}
 				}
+				JOptionPane.showMessageDialog(display.getFrame(), "You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
+			}else {
+				for (int i = 0; i < GridWidthPixelCount; i++) {
+					for (int j = 0; j < GridHeightPixelCount; j++) {
+						if(blocks[i][j]!=null && blocks[i][j].equals(new Color(MapBuilder.mario)) && blocks[i][j+1]!=null&& !blocks[i][j+1].equals(new Color(MapBuilder.mario))){
+							for (int k = 0; k < GridWidthPixelCount; k++) {
+								for (int v = 0; v < GridHeightPixelCount; v++) {
+									if(blocks[k][v]!=null && blocks[k][v].equals(new Color(MapBuilder.wario)) && blocks[k][v+1]!=null&& !blocks[k][v+1].equals(new Color(MapBuilder.wario))){
+										handler.setMap(MapBuilder.createMap(createImage(GridWidthPixelCount,GridHeightPixelCount,blocks,JOptionPane.showInputDialog("Enter file name: ","Mario Heaven")), handler));
+										State.setState(handler.getGame().gameState);
+										creatingMap=false;
+										display.getFrame().setVisible(false);
+										display.getFrame().dispose();
+										handler.getGame().mouseManager=handler.getGame().initialmouseManager;
+										return;
+									}
+								}
+							}
+						
+						}
+					}
+				}
+				JOptionPane.showMessageDialog(display.getFrame(), "You cant have a map without at least a Mario and Wario and a floor right under them. (1 for Mario and W for Wario)");
+				
 			}
-			JOptionPane.showMessageDialog(display.getFrame(), "You cant have a map without at least a Mario and a floor right under him. (1 for Mario)");
 		}
+
 		if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_H)){
 			JOptionPane.showMessageDialog(display.getFrame(), "Number key <-> Color Mapping: \n" +
 					"0 -> Erase \n" +
@@ -302,7 +324,7 @@ public class MenuState extends State {
 					"C -> Chungus (Gray)\n"+
 					"S -> StarBlock (Mint Green)\n"+
 					"W -> Wario(Gold)");
-			
+
 		}
 	}
 	public UIAnimationButton getBut() {

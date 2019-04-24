@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 import com.sun.glass.events.KeyEvent;
 
 public class Player extends BaseDynamicEntity {
@@ -22,6 +23,8 @@ public class Player extends BaseDynamicEntity {
 	public boolean won = false;
 	
 	private int doublejump =0;
+	public static boolean Inmunity =false;
+	public static boolean cooldown =true;
 	
 	public String facing = "Left";
 	public boolean moving = false;
@@ -42,7 +45,10 @@ public class Player extends BaseDynamicEntity {
 
 	@Override
 	public void tick(){
-
+		if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_I ) && cooldown == true) {
+			Inmunity =true;
+			cooldown =false;
+		}
 		if (changeDirrection) {
 			changeDirectionCounter++;
 		}
@@ -103,10 +109,12 @@ public class Player extends BaseDynamicEntity {
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickTopBounds = brick.getTopBounds();
 			//kills Mario when he touches the boundblock
-			if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds)) {
+			if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds) && mario instanceof Mario || 
+					brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds) && Inmunity== false) {
 				//System.out.println("kill");
 				mario.setHit(true);
-			}if(brick instanceof StarBlock && marioBottomBounds.intersects(brickTopBounds)) { //DETECTS WHO WON
+			}
+			if(brick instanceof StarBlock && marioBottomBounds.intersects(brickTopBounds)) { //DETECTS WHO WON
 				mario.setWin(true);
 				
 			}

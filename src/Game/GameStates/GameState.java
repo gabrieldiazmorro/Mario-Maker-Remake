@@ -2,6 +2,7 @@ package Game.GameStates;
 
 import Display.UI.UIPointer;
 import Game.Entities.DynamicEntities.BaseDynamicEntity;
+import Game.Entities.DynamicEntities.Player;
 import Game.Entities.StaticEntities.BaseStaticEntity;
 import Game.World.MapBuilder;
 import Main.Handler;
@@ -15,6 +16,8 @@ import Display.UI.UIListener;
  * Created by AlexVR on 7/1/2018.
  */
 public class GameState extends State {
+	public static int counter =0;
+	public static int coolcounter =0;
 
     public GameState(Handler handler){
         super(handler);
@@ -24,6 +27,25 @@ public class GameState extends State {
 
     @Override
     public void tick() {
+    	if (getState() == handler.getGame().gameState && Player.Inmunity==true) {
+			counter++;
+		}
+    	if (Player.cooldown == false) {
+			coolcounter++;
+		}
+    	if(coolcounter> 750) {
+    		Player.cooldown =true;
+    		coolcounter =0;
+    		System.out.println(coolcounter);
+    		System.out.println(counter);
+    		System.out.println("done now ready");
+    	}
+    	
+    	if(counter >375) {
+    		Player.Inmunity = false;
+    		counter =0;
+    		System.out.println("Not inmune");
+    	}
         if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
             State.setState(handler.getGame().pauseState);
         }
