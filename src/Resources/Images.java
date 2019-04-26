@@ -77,6 +77,9 @@ public class Images {
     public static BufferedImage testMaptwo;
     public static BufferedImage Race;
     public static BufferedImage Race2;
+    public static BufferedImage CrazyRace;
+    public static BufferedImage HelloWorldSingle;
+    public static BufferedImage HelloWorldMulti;
     public static BufferedImage grassBlock;
     public static BufferedImage broBlock;
     
@@ -102,6 +105,7 @@ public class Images {
     private SpriteSheet chungusSpriteSheet;
     private SpriteSheet SSpriteSheet;
     private SpriteSheet SAttackSpriteSheet;
+	
 
     public Images() {
 
@@ -277,11 +281,11 @@ public class Images {
             warioBigJumpLeft[3] = player2SpriteSheet.crop(115,190,20,17);//down
             warioBigJumpLeft[4] = player2SpriteSheet.crop(64,184,19,29);//change
 
-            warioBigJumpRight[0] = playerSpriteSheet.crop(232,182,19,30);
-            warioBigJumpRight[1] = playerSpriteSheet.crop(260,185,21,29);
-            warioBigJumpRight[2] = playerSpriteSheet.crop(345,185,17,27);//up
-            warioBigJumpRight[3] = playerSpriteSheet.crop(317,190,18,17);//down
-            warioBigJumpRight[4] = playerSpriteSheet.crop(371,184,18,28);//Change
+            warioBigJumpRight[0] = player2SpriteSheet.crop(232,182,19,30);
+            warioBigJumpRight[1] = player2SpriteSheet.crop(260,185,21,29);
+            warioBigJumpRight[2] = player2SpriteSheet.crop(345,185,17,27);//up
+            warioBigJumpRight[3] = player2SpriteSheet.crop(317,190,18,17);//down
+            warioBigJumpRight[4] = player2SpriteSheet.crop(371,184,18,28);//Change
             
             chungus[0] = chungusSpriteSheet.crop(349, 7, 149, 221);
 			chungus[1] = chungusSpriteSheet.crop(14, 14, 156, 213);
@@ -392,8 +396,13 @@ public class Images {
             //maps
             testMap = ImageIO.read(getClass().getResourceAsStream("/maps/testmap1.png"));
             testMaptwo = ImageIO.read(getClass().getResourceAsStream("/maps/testmap2.png"));
-            Race = ImageIO.read(getClass().getResourceAsStream("/maps/Mario Heaven.png"));
-            Race2 = ImageIO.read(getClass().getResourceAsStream("/maps/Race.png"));
+            
+            HelloWorldSingle = ImageIO.read(getClass().getResourceAsStream("/maps/HelloWorldSinglePlayer.png"));
+            HelloWorldMulti = ImageIO.read(getClass().getResourceAsStream("/maps/HelloWorldMultiPlayer.png"));
+            
+            Race = ImageIO.read(getClass().getResourceAsStream("/maps/Race1.png"));
+            Race2 = ImageIO.read(getClass().getResourceAsStream("/maps/Race2.png"));
+            CrazyRace = ImageIO.read(getClass().getResourceAsStream("/maps/CrazyRace.png"));
             //blocks
             boundBlock = interactableSpriteSheet.crop(12,73,16,16);
             misteryBlock = interactableSpriteSheet.crop(32,93,16,16);

@@ -52,17 +52,20 @@ public class GameState extends State {
         if(PlayerState.player2Activate) {
         	if(handler.getMario().getHit()|| handler.getWario().getWin()){
                State.setState(handler.getGame().wariowin); //wario wins state
-        		//System.out.println("wario wins");
+        		
             }
         	if(handler.getWario().getHit() || handler.getMario().getWin() ){
             State.setState(handler.getGame().mariowin);// Mario wins state
-        		//System.out.println("Mario wins!");
+        		
             }
         	
         }
         if(!PlayerState.player2Activate && handler.getMario().getHit()){
             State.setState(handler.getGame().deathState);
         }
+    	if(!PlayerState.player2Activate && handler.getMario().getWin() ){
+            State.setState(handler.getGame().mariowin);// Mario wins state	
+            }
         
         handler.getMario().tick();
         

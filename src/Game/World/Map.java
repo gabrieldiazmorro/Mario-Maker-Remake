@@ -82,7 +82,7 @@ public class Map {
                 g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             	}
             	else {
-            		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width *-1, entity.height, null);
+            		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x+entity.width, entity.y, entity.width *-1, entity.height, null);
 
             	}
             }
@@ -129,7 +129,7 @@ public class Map {
                 g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width, entity.height, null);
             	}
             	else {
-            		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x, entity.y, entity.width *-1, entity.height, null);
+            		g2.drawImage(((ShyGuy)entity).anim.getCurrentFrame(), entity.x+entity.width, entity.y, entity.width *-1, entity.height, null);
 
             	}
             }

@@ -21,11 +21,11 @@ public class Player extends BaseDynamicEntity {
 	public boolean hit = false;
 	public boolean grabbed =false;
 	public boolean won = false;
-	
+
 	private int doublejump =0;
 	public static boolean Inmunity =false;
 	public static boolean cooldown =true;
-	
+
 	public String facing = "Left";
 	public boolean moving = false;
 	public Animation playerSmallLeftAnimation,playerSmallRightAnimation,playerBigLeftWalkAnimation,playerBigRightWalkAnimation,playerBigLeftRunAnimation,playerBigRightRunAnimation;
@@ -110,13 +110,12 @@ public class Player extends BaseDynamicEntity {
 			Rectangle brickTopBounds = brick.getTopBounds();
 			//kills Mario when he touches the boundblock
 			if(brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds) && mario instanceof Mario || 
-					brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds) && Inmunity== false) {
-				//System.out.println("kill");
+			brick instanceof BoundBlock && marioBottomBounds.intersects(brickTopBounds) && Inmunity== false) {
 				mario.setHit(true);
 			}
 			if(brick instanceof StarBlock && marioBottomBounds.intersects(brickTopBounds)) { //DETECTS WHO WON
 				mario.setWin(true);
-				
+
 			}
 			if (marioBottomBounds.intersects(brickTopBounds)) {
 				mario.setY(brick.getY() - mario.getDimension().height + 1);

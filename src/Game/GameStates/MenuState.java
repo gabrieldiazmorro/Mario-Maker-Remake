@@ -93,39 +93,68 @@ public class MenuState extends State {
 				}, handler,Color.BLACK));
 
 
-				//testMap1
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
-					if(!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMap, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler,Color.BLACK));
-				//Race
-				uiManager.addObjects(new UIStringButton(handler.getWidth() /2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Race", () -> {
-					if(!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.Race, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler,Color.BLACK));
-				// Another Race
-				uiManager.addObjects(new UIStringButton(handler.getWidth() /2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10) + 64, 128, 64, "Race2", () -> {
-					if(!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.Race2, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler,Color.BLACK));
-				//testmap2
-				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
-					if(!handler.isInMap()) {
-						mode = "Menu";
-						handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
-						State.setState(handler.getGame().gameState);
-					}
-				}, handler,Color.BLACK));
+				if (PlayerState.player2Activate) {
+					//Race
+					uiManager.addObjects(new UIStringButton(handler.getWidth() /2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Race 1", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.Race, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+					// Another Race
+					uiManager.addObjects(new UIStringButton(handler.getWidth() /2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10) + 64, 128, 64, "Race 2", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.Race2, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+					// Another Race
+					uiManager.addObjects(new UIStringButton(handler.getWidth() /2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10) + 64, 128, 64, "Crazy Race", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.CrazyRace, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+					uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Hello World!!", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.HelloWorldMulti, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
 
+				}
+				else {
+					//testMap1
+					uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Map 1", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.testMap, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+
+					//testmap2
+					uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (64), 128, 64, "Map 2", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.testMaptwo, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+					//testMap1
+					uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 + 64, handler.getHeight() / 2 + (handler.getHeight() / 10), 128, 64, "Hello World!", () -> {
+						if(!handler.isInMap()) {
+							mode = "Menu";
+							handler.setMap(MapBuilder.createMap(Images.HelloWorldSingle, handler));
+							State.setState(handler.getGame().gameState);
+						}
+					}, handler,Color.BLACK));
+
+				}
 				//other
 				uiManager.addObjects(new UIStringButton(handler.getWidth() / 2 - 64, (handler.getHeight() / 2) + (handler.getHeight() / 10) + (128), 128, 64, "Other", () -> {
 					if(!handler.isInMap()){
@@ -299,12 +328,11 @@ public class MenuState extends State {
 									}
 								}
 							}
-						
 						}
 					}
 				}
-				JOptionPane.showMessageDialog(display.getFrame(), "You cant have a map without at least a Mario and Wario and a floor right under them. (1 for Mario and W for Wario)");
-				
+				JOptionPane.showMessageDialog(display.getFrame(), "You can't have a map without at least a Mario and Wario with a floor right under them. (1 for Mario and W for Wario)");
+
 			}
 		}
 
@@ -320,11 +348,10 @@ public class MenuState extends State {
 					"7 -> Goomba (Weird Brown)\n" +
 					"8 -> GrassBlock (Brown)\n" +
 					"9 -> BroBlock (Cyan)\n" +
-					"P -> ShyGuy (Purple)\n"+
+					"P -> ShyGuy (Dark Purple, it's broken don't use it)\n"+
 					"C -> Chungus (Gray)\n"+
 					"S -> StarBlock (Mint Green)\n"+
 					"W -> Wario(Gold)");
-
 		}
 	}
 	public UIAnimationButton getBut() {
